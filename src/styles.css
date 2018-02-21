@@ -1,1 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.wrapper {
+  width: 1200px;
+}
+
+.title {
+  display: inline-block;
+  margin: 0 0 10px;
+}
+
+.descr {
+  margin-top: 0;
+}
+
+.stars {
+  color: orange;
+}
+
+.rooms-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+}
+
+.rooms-list li {
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ccc;
+}
+
+.rooms-list li:first-child {
+  border-top-width: 0;
+}
+
+.rooms-list li:hover {
+  background-color: #f8ffb8;
+}
+
+.rooms-list li.selected {
+  background-color: #b8f757;
+}
+
+.hotel {
+  margin-bottom: 40px;
+}
+
+.room-label {
+  padding: 6px 10px;
+  display: block;
+  cursor: pointer;
+}
+
+.selected-room-text {
+  font-size: 16px;
+}
+
+.selected-rooms-list li {
+  margin-bottom: 30px;
+}
+
+.room-occupancy {
+  margin-bottom: 10px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 100;
+  margin: 0 0 30px;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-left: 10px;
+}
