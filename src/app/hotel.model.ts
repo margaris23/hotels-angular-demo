@@ -1,5 +1,20 @@
+export enum Currency {
+  EUR = 'EUR'
+}
+
+export interface Room {
+  id: string;
+  name: string;
+  pricePerAdult: number;
+  pricePerChild: number;
+}
+
 export interface Hotel {
-  title: string;
-  description: string;
+  id: string;
   stars: number;
+  name: string;
+  description: string;
+  currency: Currency;
+  rooms: Room[];
+  totalPrice: number;
 }

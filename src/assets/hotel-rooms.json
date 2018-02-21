@@ -1,0 +1,52 @@
+{
+  "id": "12345",
+  "stars": 4,
+  "name": "Mallorca Palace Suites Golf and Spa",
+  "description": "Mallorca Palace is situated in one of the most beautiful spots on the island of Mallorca.",
+  "currency": "EUR",
+  "rooms": [
+    {
+      "id": "8923478",
+      "name": "Aphrodite luxury room",
+      "pricePerAdult": 125,
+      "pricePerChild": 60
+    },
+    {
+      "id": "923476",
+      "name": "Icarus double room",
+      "pricePerAdult": 74,
+      "pricePerChild": 28
+    },
+    {
+      "id": "825790",
+      "name": "Sea view diamond",
+      "pricePerAdult": 60,
+      "pricePerChild": 0
+    },
+    {
+      "id": "825790",
+      "name": "Single room ecomony",
+      "pricePerAdult": 16,
+      "pricePerChild": 10
+    },
+    {
+      "id": "825790",
+      "name": "All inclusive double room",
+      "pricePerAdult": 43,
+      "pricePerChild": 8
+    },
+    {
+      "id": "825790",
+      "name": "Family suite",
+      "pricePerAdult": 82,
+      "pricePerChild": 47
+    },
+    {
+      "id": "825790",
+      "name": "Deluxe twin room",
+      "pricePerAdult": 23,
+      "pricePerChild": 20
+    }
+  ],
+  "totalPrice": 234.54
+}

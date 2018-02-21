@@ -3,9 +3,7 @@
   <h1 class="page-title">Select rooms to book</h1>
 
   <section>
-    <app-hotel [hotel]="mock"></app-hotel>
-
-    
+    <app-hotel [hotel]="hotel$ | async"></app-hotel>
   </section>
 
   <br />

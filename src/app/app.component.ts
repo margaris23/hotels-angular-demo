@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
 import { Hotel } from './hotel.model';
+import { HotelService } from './services/hotel.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +10,9 @@ import { Hotel } from './hotel.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public mock: Hotel = {
-    title: 'Mallorca Palace Suites Golf and Spa',
-    description: 'Mallorca Palace is situated in one of the most beautiful spots on the island of Mallorca.',
-    stars: 4
-  };
+  public hotel$: Observable<Hotel>;
+
+  constructor(private hotelService: HotelService) {
+    this.hotel$ = this.hotelService.hotel$();
+  }
 }
