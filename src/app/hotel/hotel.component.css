@@ -1,0 +1,59 @@
+.title {
+  display: inline-block;
+  margin: 0 0 10px;
+}
+
+.descr {
+  margin-top: 0;
+}
+
+.stars {
+  color: orange;
+}
+
+.rooms-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+}
+
+.rooms-list li {
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ccc;
+}
+
+.rooms-list li:first-child {
+  border-top-width: 0;
+}
+
+.rooms-list li:hover {
+  background-color: #f8ffb8;
+}
+
+.rooms-list li.selected {
+  background-color: #b8f757;
+}
+
+.hotel {
+  margin-bottom: 40px;
+}
+
+.room-label {
+  padding: 6px 10px;
+  display: block;
+  cursor: pointer;
+}
+
+.selected-room-text {
+  font-size: 16px;
+}
+
+.selected-rooms-list li {
+  margin-bottom: 30px;
+}
+
+.room-occupancy {
+  margin-bottom: 10px;
+}

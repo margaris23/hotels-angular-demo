@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Hotel } from './hotel.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  public mock: Hotel = {
+    title: 'Mallorca Palace Suites Golf and Spa',
+    description: 'Mallorca Palace is situated in one of the most beautiful spots on the island of Mallorca.',
+    stars: 4
+  };
 }
