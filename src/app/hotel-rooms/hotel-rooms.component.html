@@ -2,7 +2,7 @@
   <h4 class="left" style="margin-top: 0">Available rooms</h4>
   <span class="right">
     <label>Order by:</label>
-    <select [ngModel]="orderValue" (ngModelChange)="onOrderChanged($event)">
+    <select [ngModel]="orderValue" (ngModelChange)="onSelectOrder($event)">
       <option
         *ngFor="let order of orderBy"
         [ngValue]="order.value">{{order.text}}</option>
@@ -12,7 +12,7 @@
 
 <ul class="hotel-rooms__list">
   <app-hotel-room
-    *ngFor="let room of rooms | roomOrder:orderValue; let first = first"
+    *ngFor="let room of rooms | roomOrder:(selectedOrder$ | async); let first = first"
     [room]="room"
     [isFirst]="first"
     [isSelected]="selectedRooms$ | async | roomSelected:room.id"

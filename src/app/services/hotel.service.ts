@@ -5,11 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { State } from '../hotel.reducer';
 import { Hotel, Room } from '../hotel.model';
-import {
-  SelectHotelAction,
-  SelectHotelActionPayload,
-  UnSelectHotelAction
- } from '../hotel.actions';
+import * as actions from '../hotel.actions';
  import { transformRooms } from '../utils';
 
 @Injectable()
@@ -26,14 +22,18 @@ export class HotelService {
   }
 
   public dispatchSelectAction(room: Room): void {
-    this.store.dispatch(new SelectHotelAction({
+    this.store.dispatch(new actions.SelectHotelAction({
       roomId: room.id,
       room
-    } as SelectHotelActionPayload));
+    } as actions.SelectHotelActionPayload));
   }
 
   public dispatchUnselectAction(roomId: string): void {
-    this.store.dispatch(new UnSelectHotelAction(roomId));
+    this.store.dispatch(new actions.UnSelectHotelAction(roomId));
+  }
+
+  public dispatchSortAction(orderBy: number): void {
+    this.store.dispatch(new actions.SortHotelRoomsAction(orderBy));
   }
 }
 

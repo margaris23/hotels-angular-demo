@@ -1,24 +1,21 @@
-<div class="wrapper">
 
-  <h1 class="page-title">Select rooms to book</h1>
+<h1 class="page-title">Select rooms to book</h1>
 
-  <section>
-    <app-hotel [hotel]="hotel$ | async"></app-hotel>
-  </section>
+<section>
+  <app-hotel [hotel]="hotel$ | async"></app-hotel>
+</section>
 
-  <br />
+<br />
 
-  <section>
+<section>
 
-    <app-selected-rooms></app-selected-rooms>
+  <app-selected-rooms></app-selected-rooms>
 
-    <div>
-      <input type="submit" value="BOOK" disabled="" />
-      <em>No rooms selected</em>
-    </div>
+  <div>
+    <input type="submit" value="BOOK" disabled="" />
+    <em>No rooms selected</em>
+  </div>
 
-  </section>
-
-</div>
+</section>
 
 <router-outlet></router-outlet>

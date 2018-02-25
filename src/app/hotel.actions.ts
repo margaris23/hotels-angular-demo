@@ -4,7 +4,8 @@ import { Room } from './hotel.model';
 export enum HotelActionTypes {
   SELECT = '[Hotel Action] Select',
   UNSELECT = '[Hotel Action] Unselect',
-  RESET = '[Hotel Action] Reset'
+  RESET = '[Hotel Action] Reset',
+  SORT_ROOMS = '[Hotel Action] Sort rooms'
 }
 
 export interface SelectHotelActionPayload {
@@ -27,7 +28,13 @@ export class ResetHotelAction implements Action {
   constructor(public payload?: any) {}
 }
 
+export class SortHotelRoomsAction implements Action {
+  public readonly type: string = HotelActionTypes.SORT_ROOMS;
+  constructor(public payload: number) {}
+}
+
 export type HotelActions =
   | SelectHotelAction
   | UnSelectHotelAction
-  | ResetHotelAction;
+  | ResetHotelAction
+  | SortHotelRoomsAction;

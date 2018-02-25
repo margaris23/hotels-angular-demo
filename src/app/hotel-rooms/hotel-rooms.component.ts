@@ -3,17 +3,17 @@ import {
   Input,
   ChangeDetectionStrategy,
   OnInit,
-  HostBinding,
-  ChangeDetectorRef
+  HostBinding
 } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { Room } from '../hotel.model';
 import { SelectEvent } from '../hotel-room/hotel-room.component';
-import { State, getSelectedRooms } from '../hotel.reducer';
+import { SelectedRooms, getSelectedRooms, getOrderBy } from '../hotel.reducer';
 import { HotelService } from '../services/hotel.service';
 import { ROOM_ORDER } from '../pipes/room-order.pipe';
+import { initialState } from '../hotel.reducer';
 
 export interface OrderBy {
   value: number;
@@ -30,21 +30,20 @@ export class HotelRoomsComponent implements OnInit {
   @HostBinding('attr.class') public hostClass = 'hotel-rooms';
   @Input() public rooms: Room[];
 
-  public selectedRooms$: Observable<State>;
-
-  // TODO: transfer to store
-  public orderValue = ROOM_ORDER.INITIAL;
-  public readonly orderBy: OrderBy[] = [];
+  public selectedRooms$: Observable<SelectedRooms>;
+  public orderValue: number = initialState.orderBy;
+  public selectedOrder$: Observable<number>;
+  public orderBy: OrderBy[] = [];
 
   constructor(
     private store: Store<any>,
-    private hotelService: HotelService,
-    private cdRef: ChangeDetectorRef
+    private hotelService: HotelService
   ) {}
 
   public ngOnInit(): void {
     this.selectedRooms$ = this.store.pipe(select(getSelectedRooms));
-    this.initOrderBy();
+    this.selectedOrder$ = this.store.pipe(select(getOrderBy));
+    this.initSortOptions();
   }
 
   public onSelected(event: SelectEvent): void {
@@ -53,12 +52,11 @@ export class HotelRoomsComponent implements OnInit {
       : this.hotelService.dispatchUnselectAction(event.room.id);
   }
 
-  public onOrderChanged(order: number): void {
-    this.orderValue = order;
-    this.cdRef.markForCheck();
+  public onSelectOrder(orderBy: number): void {
+    this.hotelService.dispatchSortAction(orderBy);
   }
 
-  private initOrderBy(): void {
+  private initSortOptions(): void {
     this.orderBy.push({
       value: ROOM_ORDER.INITIAL,
       text: 'Initial order'

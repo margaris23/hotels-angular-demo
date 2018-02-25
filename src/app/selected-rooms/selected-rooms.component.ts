@@ -3,7 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { State, getSelectedRooms } from '../hotel.reducer';
+import { SelectedRooms, getSelectedRooms } from '../hotel.reducer';
 import { Room } from '../hotel.model';
 
 @Component({
@@ -14,14 +14,14 @@ import { Room } from '../hotel.model';
 export class SelectedRoomsComponent implements OnInit {
   public selectedRooms$: Observable<Room[]>;
 
-  private toRooms = (state: State): Room[] =>
-    Object.keys(state).map((roomId: string) => state[roomId])
+  private toRoomsArray = (rooms: SelectedRooms): Room[] =>
+    Object.keys(rooms).map((roomId: string) => rooms[roomId])
 
   constructor(private store: Store<any>) { }
 
   public ngOnInit(): void {
     this.selectedRooms$ = this.store
                               .pipe(select(getSelectedRooms))
-                              .map(this.toRooms);
+                              .map(this.toRoomsArray);
   }
 }
