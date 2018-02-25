@@ -1,12 +1,8 @@
-.rooms-list {
+.hotel-rooms__list {
   list-style: none;
   padding: 0;
   margin: 0;
   border: 1px solid #ccc;
-}
-
-.hotel {
-  margin-bottom: 40px;
 }
 
 .selected-room-text {

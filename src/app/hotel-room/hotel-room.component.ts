@@ -8,8 +8,8 @@ import {
 import { Room } from '../hotel.model';
 
 export interface SelectEvent {
-  roomId: string;
-  value: boolean;
+  room: Room;
+  selected: boolean;
 }
 
 @Component({
@@ -22,12 +22,12 @@ export class HotelRoomComponent {
   @Input() public room: Room;
   @Input() public isFirst: boolean;
   @Input() public isSelected: boolean;
-  @Output() public select: EventEmitter<SelectEvent> = new EventEmitter<SelectEvent>();
+  @Output() public select = new EventEmitter<SelectEvent>();
 
   public onChanged(event: Event): void {
     this.select.emit({
-      roomId: this.room.id,
-      value: !!event.target['checked']
+      room: this.room,
+      selected: !!event.target['checked']
     } as SelectEvent);
   }
 }

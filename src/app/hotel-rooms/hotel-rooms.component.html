@@ -10,12 +10,12 @@
   </span>
 </div>
 
-<ul class="rooms-list">
+<ul class="hotel-rooms__list">
   <app-hotel-room
     *ngFor="let room of rooms;let first = first"
     [room]="room"
     [isFirst]="first"
-    [isSelected]="tempMap[room.id]"
+    [isSelected]="selectedRooms$ | async | hotelSelected:room.id"
     (select)="onSelected($event)">
   </app-hotel-room>
 </ul>
