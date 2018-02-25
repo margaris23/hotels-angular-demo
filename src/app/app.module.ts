@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule, Store } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -11,9 +13,10 @@ import { HotelRoomsComponent } from './hotel-rooms/hotel-rooms.component';
 import { HotelService } from './services/hotel.service';
 import { HotelRoomComponent } from './hotel-room/hotel-room.component';
 import { hotelReducer as hotel } from './hotel.reducer';
-import { HotelSelectedPipe } from './hotel-selected.pipe';
+import { RoomSelectedPipe } from './pipes/room-selected.pipe';
 import { SelectedRoomsComponent } from './selected-rooms/selected-rooms.component';
 import { SelectedRoomComponent } from './selected-room/selected-room.component';
+import { RoomOrderPipe } from './pipes/room-order.pipe';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,15 @@ import { SelectedRoomComponent } from './selected-room/selected-room.component';
     HotelComponent,
     HotelRoomsComponent,
     HotelRoomComponent,
-    HotelSelectedPipe,
     SelectedRoomsComponent,
-    SelectedRoomComponent
+    SelectedRoomComponent,
+    RoomSelectedPipe,
+    RoomOrderPipe
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({ hotel }),

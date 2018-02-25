@@ -10,6 +10,7 @@ import {
   SelectHotelActionPayload,
   UnSelectHotelAction
  } from '../hotel.actions';
+ import { transformRooms } from '../utils';
 
 @Injectable()
 export class HotelService {
@@ -19,7 +20,9 @@ export class HotelService {
   ) {}
 
   public hotel$(): Observable<Hotel> {
-    return this.http.get<Hotel>('/assets/hotel-rooms.json');
+    return this.http
+               .get<Hotel>('/assets/hotel-rooms.json')
+               .map(transformRooms);
   }
 
   public dispatchSelectAction(room: Room): void {

@@ -2,20 +2,20 @@
   <h4 class="left" style="margin-top: 0">Available rooms</h4>
   <span class="right">
     <label>Order by:</label>
-    <select>
-      <option>Initial order</option>
-      <option>Name</option>
-      <option>Price per adult</option>
+    <select [ngModel]="orderValue" (ngModelChange)="onOrderChanged($event)">
+      <option
+        *ngFor="let order of orderBy"
+        [ngValue]="order.value">{{order.text}}</option>
     </select>
   </span>
 </div>
 
 <ul class="hotel-rooms__list">
   <app-hotel-room
-    *ngFor="let room of rooms;let first = first"
+    *ngFor="let room of rooms | roomOrder:orderValue; let first = first"
     [room]="room"
     [isFirst]="first"
-    [isSelected]="selectedRooms$ | async | hotelSelected:room.id"
+    [isSelected]="selectedRooms$ | async | roomSelected:room.id"
     (select)="onSelected($event)">
   </app-hotel-room>
 </ul>
