@@ -1,9 +1,9 @@
 import { Action, createFeatureSelector, createSelector } from '@ngrx/store';
 import { HotelActionTypes, HotelActions } from './hotel.actions';
-import { Hotel } from './hotel.model';
+import { Room } from './hotel.model';
 
 export interface State {
-  [roomId: string]: Hotel;
+  [roomId: string]: Room;
 }
 
 export function hotelReducer(

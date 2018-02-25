@@ -1,0 +1,11 @@
+.selected-room {
+  margin-bottom: 30px;
+}
+
+.selected-room__text {
+  font-size: 16px;
+}
+
+.selected-room__occupancy {
+  margin-bottom: 10px;
+}

@@ -1,23 +1,23 @@
-.room-label {
-  padding: 6px 10px;
-  display: block;
-  cursor: pointer;
-}
-
-li {
+.hotel-room {
   padding: 0;
   margin: 0;
   border-top: 1px solid #ccc;
 }
 
-li.first {
+.hotel-room__label {
+  padding: 6px 10px;
+  display: block;
+  cursor: pointer;
+}
+
+.hotel-room--first {
   border-top-width: 0;
 }
 
-li:hover {
+.hotel-room:hover {
   background-color: #f8ffb8;
 }
 
-li.selected {
+.hotel-room--selected {
   background-color: #b8f757;
 }

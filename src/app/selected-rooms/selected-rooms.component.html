@@ -1,0 +1,7 @@
+<h4>Selected rooms</h4>
+<ul>
+  <app-selected-room
+    *ngFor="let room of selectedRooms$ | async"
+    [room]="room">
+  </app-selected-room>
+</ul>

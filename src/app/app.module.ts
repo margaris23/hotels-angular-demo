@@ -12,6 +12,8 @@ import { HotelService } from './services/hotel.service';
 import { HotelRoomComponent } from './hotel-room/hotel-room.component';
 import { hotelReducer as hotel } from './hotel.reducer';
 import { HotelSelectedPipe } from './hotel-selected.pipe';
+import { SelectedRoomsComponent } from './selected-rooms/selected-rooms.component';
+import { SelectedRoomComponent } from './selected-room/selected-room.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HotelSelectedPipe } from './hotel-selected.pipe';
     HotelComponent,
     HotelRoomsComponent,
     HotelRoomComponent,
-    HotelSelectedPipe
+    HotelSelectedPipe,
+    SelectedRoomsComponent,
+    SelectedRoomComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,12 @@
-.title {
+.hotel__title {
   display: inline-block;
   margin: 0 0 10px;
 }
 
-.descr {
+.hotel__descr {
   margin-top: 0;
 }
 
-.stars {
+.hotel__stars {
   color: orange;
 }

@@ -5,7 +5,7 @@ import {
   OnInit,
   HostBinding
 } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { Room } from '../hotel.model';
@@ -31,7 +31,7 @@ export class HotelRoomsComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.selectedRooms$ = this.store.select(getSelectedRooms);
+    this.selectedRooms$ = this.store.pipe(select(getSelectedRooms));
   }
 
   public onSelected(event: SelectEvent): void {
