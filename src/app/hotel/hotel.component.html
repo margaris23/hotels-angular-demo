@@ -1,7 +1,8 @@
 <header>
   <h2 class="hotel__title">{{hotel?.name}}</h2>
-  <span class="hotel__stars">&#9733; &#9733; &#9733; &#9733;</span>
+  <app-hotel-rating [value]="hotel?.stars"></app-hotel-rating>
   <p class="hotel__descr">{{hotel?.description}}</p>
 </header>
 
 <app-hotel-rooms [rooms]="hotel?.rooms"></app-hotel-rooms>
+
