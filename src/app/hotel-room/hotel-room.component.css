@@ -1,0 +1,23 @@
+.room-label {
+  padding: 6px 10px;
+  display: block;
+  cursor: pointer;
+}
+
+li {
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ccc;
+}
+
+li.first {
+  border-top-width: 0;
+}
+
+li:hover {
+  background-color: #f8ffb8;
+}
+
+li.selected {
+  background-color: #b8f757;
+}

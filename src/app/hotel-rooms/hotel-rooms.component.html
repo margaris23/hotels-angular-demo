@@ -1,0 +1,21 @@
+<div class="clearfix">
+  <h4 class="left" style="margin-top: 0">Available rooms</h4>
+  <span class="right">
+    <label>Order by:</label>
+    <select>
+      <option>Initial order</option>
+      <option>Name</option>
+      <option>Price per adult</option>
+    </select>
+  </span>
+</div>
+
+<ul class="rooms-list">
+  <app-hotel-room
+    *ngFor="let room of rooms;let first = first"
+    [room]="room"
+    [isFirst]="first"
+    [isSelected]="tempMap[room.id]"
+    (select)="onSelected($event)">
+  </app-hotel-room>
+</ul>
