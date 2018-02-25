@@ -12,8 +12,8 @@
   <app-selected-rooms></app-selected-rooms>
 
   <div>
-    <input type="submit" value="BOOK" disabled="" />
-    <em>No rooms selected</em>
+    <input type="submit" value="BOOK" [disabled]="noRoomsSelected$ | async" />
+    <em *ngIf="noRoomsSelected$ | async">No rooms selected</em>
   </div>
 
 </section>

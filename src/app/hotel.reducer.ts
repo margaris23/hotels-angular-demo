@@ -63,3 +63,8 @@ export const getOrderBy = createSelector(
   getHotelState,
   state => state.orderBy
 );
+
+export const hasRoomsSelected = createSelector(
+  getHotelState,
+  state => !!Object.keys(state.selectedRooms).length
+);

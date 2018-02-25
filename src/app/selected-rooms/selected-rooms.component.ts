@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -9,7 +9,8 @@ import { Room } from '../hotel.model';
 @Component({
   selector: 'app-selected-rooms',
   templateUrl: './selected-rooms.component.html',
-  styleUrls: ['./selected-rooms.component.css']
+  styleUrls: ['./selected-rooms.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectedRoomsComponent implements OnInit {
   public selectedRooms$: Observable<Room[]>;

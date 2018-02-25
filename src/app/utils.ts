@@ -14,3 +14,7 @@ export function transformRooms(hotel: Hotel): Hotel {
     rooms: getRoomsIndexed(hotel.rooms)
   };
 }
+
+export function invert(value: boolean): boolean {
+  return !value;
+}
