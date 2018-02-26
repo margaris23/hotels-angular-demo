@@ -1,22 +1,14 @@
 <li class="selected-room">
   <p class="selected-room__text"><strong>{{room?.name}}</strong></p>
   <div class="selected-room__occupancy">
-    <label>
-      Adults
-      <select>
-        <option>1</option>
-        <option selected="">2</option>
-        <option>3</option>
-        <option>4</option>
+    <label>Adults
+      <select [ngModel]="room.adults" (ngModelChange)="onAdultsSelected($event)">
+        <option *ngFor="let i of [1,2,3,4]">{{i}}</option>
       </select>
     </label>
-    <label>
-      Children
-      <select>
-        <option selected="">0</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+    <label>Children
+      <select [ngModel]="room.children" (ngModelChange)="onChildrenSelected($event)">
+        <option *ngFor="let i of [0,1,2,3]">{{i}}</option>
       </select>
     </label>
   </div>

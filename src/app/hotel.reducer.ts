@@ -1,10 +1,10 @@
 import { Action, createFeatureSelector, createSelector } from '@ngrx/store';
 import { HotelActionTypes, HotelActions } from './hotel.actions';
-import { Room } from './hotel.model';
+import { SelectedRoom } from './hotel.model';
 import { ROOM_ORDER } from './pipes/room-order.pipe';
 
 export interface SelectedRooms {
-  [roomId: string]: Room;
+  [roomId: string]: SelectedRoom;
 }
 
 export interface State {
@@ -45,6 +45,20 @@ export function hotelReducer(
       return {
         ...state,
         orderBy: action.payload
+      };
+
+    case HotelActionTypes.SELECT_ADULTS:
+      selectedRooms[action.payload.roomId].adults = action.payload.adults;
+      return {
+        ...state,
+        selectedRooms
+      };
+
+    case HotelActionTypes.SELECT_CHILDREN:
+      selectedRooms[action.payload.roomId].children = action.payload.children;
+      return {
+        ...state,
+        selectedRooms
       };
 
     default:

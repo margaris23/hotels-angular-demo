@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
 import { State } from '../hotel.reducer';
-import { Hotel, Room } from '../hotel.model';
+import { Hotel, Room, SelectedRoom, Defaults } from '../hotel.model';
 import * as actions from '../hotel.actions';
- import { transformRooms } from '../utils';
+import { transformRooms } from '../utils';
 
 @Injectable()
 export class HotelService {
@@ -17,14 +18,19 @@ export class HotelService {
 
   public hotel$(): Observable<Hotel> {
     return this.http
-               .get<Hotel>('/assets/hotel-rooms.json')
-               .map(transformRooms);
+      .get<Hotel>('/assets/hotel-rooms.json')
+      .pipe(map(transformRooms));
   }
 
   public dispatchSelectAction(room: Room): void {
     this.store.dispatch(new actions.SelectHotelAction({
       roomId: room.id,
-      room
+      room: {
+        ...room,
+        adults: Defaults.adults,
+        children: Defaults.children,
+        childrenAges: []
+      } as SelectedRoom
     } as actions.SelectHotelActionPayload));
   }
 
@@ -34,6 +40,14 @@ export class HotelService {
 
   public dispatchSortAction(orderBy: number): void {
     this.store.dispatch(new actions.SortHotelRoomsAction(orderBy));
+  }
+
+  public dispatchSelectAdults(roomId: string, adults: number): void {
+    this.store.dispatch(new actions.SelectAdultsRoomHotelAction({roomId, adults}));
+  }
+
+  public dispatchSelectChildren(roomId: string, children: number): void {
+    this.store.dispatch(new actions.SelectChildrenRoomHotelAction({roomId, children}));
   }
 }
 

@@ -1,0 +1,24 @@
+{
+    "hotelId": 23456,
+    "rooms": [
+        {
+            "id": "293849",
+            "adults": 3,
+            "children": 0,
+            "childrenAges": []
+        },
+        {
+            "id": "239847",
+            "adults": 3,
+            "children": 2,
+            "childrenAges": [5,9]
+        },
+         {
+            "id": "349847",
+            "adults": 4,
+            "children": 3,
+            "childrenAges": [6,2,11]
+        }
+    ],
+    "totalPrice": 1184.00
+}

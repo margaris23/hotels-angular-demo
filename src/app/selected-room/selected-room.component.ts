@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
+
 import { Room } from '../hotel.model';
 
 @Component({
@@ -9,4 +16,15 @@ import { Room } from '../hotel.model';
 })
 export class SelectedRoomComponent {
   @Input() public room: Room;
+
+  @Output() public adultsSelect = new EventEmitter<number>();
+  @Output() public childrenSelect = new EventEmitter<number>();
+
+  public onAdultsSelected(adults: string): void {
+    this.adultsSelect.emit(+adults);
+  }
+
+  public onChildrenSelected(children: string): void {
+    this.childrenSelect.emit(+children);
+  }
 }

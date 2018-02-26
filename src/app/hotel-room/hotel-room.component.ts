@@ -25,9 +25,10 @@ export class HotelRoomComponent {
   @Output() public select = new EventEmitter<SelectEvent>();
 
   public onChanged(event: Event): void {
+    const selected = !!event.target['checked'];
     this.select.emit({
       room: this.room,
-      selected: !!event.target['checked']
+      selected
     } as SelectEvent);
   }
 }
