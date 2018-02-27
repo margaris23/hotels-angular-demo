@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { map, first } from 'rxjs/operators';
+import { map, first, tap } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { Router } from '@angular/router';
 
@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
   public hotel$: Observable<Hotel>;
   public noRoomsSelected$: Observable<boolean>;
   public total$: Observable<number>;
-  public showError = false;
+  public hasErrors = false;
+  public submitted = false;
 
   private toSelectedRoomsArray = (rooms: SelectedRooms): SelectedRoom[] =>
     Object.keys(rooms).map((roomId: string) => rooms[roomId])
@@ -40,6 +41,7 @@ export class AppComponent implements OnInit {
     this.total$ = this.store.pipe(
       select(getSelectedRooms),
       map(this.toSelectedRoomsArray),
+        tap((rooms: any[]) => this.hasErrors = rooms.length > 3),
       map(priceSum)
     );
   }
@@ -50,6 +52,7 @@ export class AppComponent implements OnInit {
 
   public onSubmit(event: Event): void {
     event.preventDefault();
+    this.submitted = true;
     this.router.navigate(['/result']);
   }
 }
