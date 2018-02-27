@@ -50,13 +50,6 @@ export class AppComponent implements OnInit {
 
   public onSubmit(event: Event): void {
     event.preventDefault();
-    console.log(this.router.navigate(['/result']));
-    // this.store.pipe(
-    //   select(getSelectedRooms),
-    //   first(),
-    //   map((selectedRooms: SelectedRooms) => {
-        
-    //   })
-    // ).subscribe();
+    this.router.navigate(['/result']);
   }
 }

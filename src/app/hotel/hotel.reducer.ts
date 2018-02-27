@@ -5,22 +5,6 @@ import { SelectedRoom, Defaults } from './hotel.model';
 import { ROOM_ORDER } from './pipes/room-order.pipe';
 import { range } from '../utils';
 
-// TODO refactor
-function getUpdatedChildrenAges(childrenAges: number[], childrenNum: number): number[] {
-  const _childrenAges = [ ...childrenAges ];
-  const lengthDiff: number = _childrenAges.length - childrenNum;
-  if (lengthDiff > 0) {
-    _childrenAges.splice(0, lengthDiff);
-  } else {
-    let index = _childrenAges.length;
-    const value = Defaults.childAge;
-    for (let i = lengthDiff; i < 0; ++i, ++index) {
-      _childrenAges.push(value);
-    }
-  }
-  return _childrenAges;
-}
-
 export interface SelectedRooms {
   [roomId: string]: SelectedRoom;
 }
@@ -116,3 +100,19 @@ export const hasRoomsSelected = createSelector(
   getHotelState,
   state => !!Object.keys(state.selectedRooms).length
 );
+
+// TODO refactor
+function getUpdatedChildrenAges(childrenAges: number[], childrenNum: number): number[] {
+  const _childrenAges = [ ...childrenAges ];
+  const lengthDiff: number = _childrenAges.length - childrenNum;
+  if (lengthDiff > 0) {
+    _childrenAges.splice(0, lengthDiff);
+  } else {
+    let index = _childrenAges.length;
+    const value = Defaults.childAge;
+    for (let i = lengthDiff; i < 0; ++i, ++index) {
+      _childrenAges.push(value);
+    }
+  }
+  return _childrenAges;
+}
