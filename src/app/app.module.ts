@@ -18,6 +18,7 @@ import { SelectedRoomsComponent } from './selected-rooms/selected-rooms.componen
 import { SelectedRoomComponent } from './selected-room/selected-room.component';
 import { RoomOrderPipe } from './pipes/room-order.pipe';
 import { HotelRatingComponent } from './hotel-rating/hotel-rating.component';
+import { CommonSelectorComponent } from './common-selector/common-selector.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HotelRatingComponent } from './hotel-rating/hotel-rating.component';
     SelectedRoomComponent,
     RoomSelectedPipe,
     RoomOrderPipe,
-    HotelRatingComponent
+    HotelRatingComponent,
+    CommonSelectorComponent
   ],
   imports: [
     BrowserModule,

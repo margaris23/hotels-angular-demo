@@ -2,14 +2,18 @@
   <p class="selected-room__text"><strong>{{room?.name}}</strong></p>
   <div class="selected-room__occupancy">
     <label>Adults
-      <select [ngModel]="room.adults" (ngModelChange)="onAdultsSelected($event)">
-        <option *ngFor="let i of [1,2,3,4]">{{i}}</option>
-      </select>
+      <app-common-selector
+        [value]="room.adults"
+        [range]="[1,2,3,4]"
+        (select)="onAdultsSelected($event)">
+      </app-common-selector>
     </label>
     <label>Children
-      <select [ngModel]="room.children" (ngModelChange)="onChildrenSelected($event)">
-        <option *ngFor="let i of [0,1,2,3]">{{i}}</option>
-      </select>
+      <app-common-selector
+        [value]="room.children"
+        [range]="[0,1,2,3]"
+        (select)="onChildrenSelected($event)">
+      </app-common-selector>
     </label>
   </div>
   <strong>EUR 250.00</strong>
