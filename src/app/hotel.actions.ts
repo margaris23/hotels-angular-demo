@@ -16,7 +16,7 @@ export interface SelectHotelActionPayload {
 }
 
 export interface SelectCommonPayload {
-  roomId: string,
+  roomId: string;
   adults?: number;
   children?: number;
 }

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   public hotel$: Observable<Hotel>;
   public noRoomsSelected$: Observable<boolean>;
   public total$: Observable<number>;
-  public showError: boolean = false;
+  public showError = false;
 
   private toSelectedRoomsArray = (rooms: SelectedRooms): SelectedRoom[] =>
     Object.keys(rooms).map((roomId: string) => rooms[roomId])

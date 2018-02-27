@@ -1,3 +1,3 @@
-<select [ngModel]="value" (ngModelChange)="onSelected($event)">
+<select [ngModel]="value" (ngModelChange)="onSelected(+$event)">
   <option *ngFor="let i of range">{{i}}</option>
 </select>

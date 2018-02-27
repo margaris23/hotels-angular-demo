@@ -13,7 +13,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class CommonSelectorComponent{
+export class CommonSelectorComponent {
   @Input() public value: number;
   @Input() public range: number[];
 

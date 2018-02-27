@@ -1,5 +1,16 @@
 import { Room, Hotel, SelectedRoom } from './hotel.model';
 
+export function range(min: number, max: number, value?: number): number[] {
+  if (!max || min > max) {
+    return [];
+  }
+  const reply = new Array(max);
+  for (let val = min, index = 0; val <= max; ++val, ++index) {
+    reply[index] = value || val;
+  }
+  return reply;
+}
+
 export const getRoomWithIndex = (room: Room, initialIndex: number) => ({
   ...room,
   initialIndex
