@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 import { State } from '../hotel.reducer';
 import { Hotel, Room, SelectedRoom, Defaults, ChildAge } from '../hotel.model';
 import * as actions from '../hotel.actions';
-import { transformRooms } from '../utils';
+import { transformRooms } from '../../utils';
 
 @Injectable()
 export class HotelService {

@@ -6,8 +6,8 @@ import {
   EventEmitter
 } from '@angular/core';
 
-import { SelectedRoom, ChildAge, Defaults } from '../hotel.model';
-import { range } from '../utils';
+import { SelectedRoom, ChildAge, Defaults } from '../../hotel.model';
+import { range } from '../../../utils';
 
 @Component({
   selector: 'app-selected-room',

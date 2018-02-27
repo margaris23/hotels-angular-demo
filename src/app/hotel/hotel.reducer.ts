@@ -3,7 +3,7 @@ import { Action, createFeatureSelector, createSelector } from '@ngrx/store';
 import { HotelActionTypes, HotelActions } from './hotel.actions';
 import { SelectedRoom, Defaults } from './hotel.model';
 import { ROOM_ORDER } from './pipes/room-order.pipe';
-import { range } from './utils';
+import { range } from '../utils';
 
 // TODO refactor
 function getUpdatedChildrenAges(childrenAges: number[], childrenNum: number): number[] {
@@ -100,7 +100,7 @@ export function hotelReducer(
   }
 }
 
-const getHotelState = createFeatureSelector<State>('hotel');
+export const getHotelState = createFeatureSelector<State>('hotel');
 
 export const getSelectedRooms = createSelector(
   getHotelState,

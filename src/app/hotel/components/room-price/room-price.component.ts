@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { Currency } from '../hotel.model';
+import { Currency } from '../../hotel.model';
 
 @Component({
   selector: 'app-room-price',

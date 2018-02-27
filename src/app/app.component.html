@@ -12,7 +12,11 @@
   <app-selected-rooms></app-selected-rooms>
 
   <div>
-    <input type="submit" value="BOOK" [disabled]="noRoomsSelected$ | async" />
+    <input
+      type="submit"
+      value="BOOK"
+      [disabled]="noRoomsSelected$ | async"
+      (click)="onSubmit($event)" />
     <em *ngIf="noRoomsSelected$ | async">No rooms selected</em>
     <span *ngIf="total$ | async">Total Price: <strong>EUR {{total$ | async}}</strong></span>
     <span *ngIf="showError" class="error">Too many rooms</span>

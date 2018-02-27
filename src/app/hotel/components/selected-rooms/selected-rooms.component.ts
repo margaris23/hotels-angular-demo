@@ -3,9 +3,9 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
-import { SelectedRooms, getSelectedRooms } from '../hotel.reducer';
-import { HotelService } from '../services/hotel.service';
-import { Room, ChildAge } from '../hotel.model';
+import { SelectedRooms, getSelectedRooms } from '../../hotel.reducer';
+import { HotelService } from '../../services/hotel.service';
+import { Room, ChildAge } from '../../hotel.model';
 
 @Component({
   selector: 'app-selected-rooms',
