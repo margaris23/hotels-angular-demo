@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+import { map, tap, take } from 'rxjs/operators';
 
 import { State } from '../hotel.reducer';
 import { Hotel, Room, SelectedRoom, Defaults, ChildAge } from '../hotel.model';

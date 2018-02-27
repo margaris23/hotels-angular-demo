@@ -8,4 +8,5 @@ export interface ResultRoom {
 export interface Result {
   hotelId: string;
   rooms: ResultRoom[];
+  totalPrice: number;
 }

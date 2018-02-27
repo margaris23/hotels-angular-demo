@@ -5,6 +5,7 @@ import { map, take } from 'rxjs/operators';
 
 import { getSelectedRooms, SelectedRooms } from '../hotel/hotel.reducer';
 import { Result, ResultRoom } from './result.model';
+import { priceSum } from '../utils';
 
 @Component({
   selector: 'app-result',
@@ -13,12 +14,15 @@ import { Result, ResultRoom } from './result.model';
 export class ResultComponent implements OnInit {
   public result$: Observable<Result>;
 
-  private toResult = (rooms: SelectedRooms): Result => ({
-    hotelId: '',
-    rooms: Object
+  private toResult = (rooms: SelectedRooms): Result => {
+    return {
+      hotelId: '',
+      rooms: Object
               .keys(rooms)
-              .map(this.toRoom(rooms))
-  });
+              .map(this.toRoom(rooms)),
+      totalPrice: 0
+    };
+  }
 
   constructor(private store: Store<any>) {}
 
