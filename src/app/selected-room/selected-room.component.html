@@ -16,5 +16,10 @@
       </app-common-selector>
     </label>
   </div>
-  <strong>EUR 250.00</strong>
+  <app-room-price
+    [adults]="room.adults"
+    [pricePerAdult]="room.pricePerAdult"
+    [children]="room.children"
+    [pricePerChild]="room.pricePerChild">
+  </app-room-price>
 </li>

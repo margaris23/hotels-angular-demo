@@ -19,6 +19,7 @@ import { SelectedRoomComponent } from './selected-room/selected-room.component';
 import { RoomOrderPipe } from './pipes/room-order.pipe';
 import { HotelRatingComponent } from './hotel-rating/hotel-rating.component';
 import { CommonSelectorComponent } from './common-selector/common-selector.component';
+import { RoomPriceComponent } from './room-price/room-price.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CommonSelectorComponent } from './common-selector/common-selector.compo
     RoomSelectedPipe,
     RoomOrderPipe,
     HotelRatingComponent,
-    CommonSelectorComponent
+    CommonSelectorComponent,
+    RoomPriceComponent
   ],
   imports: [
     BrowserModule,
