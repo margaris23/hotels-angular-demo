@@ -8,12 +8,12 @@ import {
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { Room } from '../hotel.model';
+import { Room } from '../../hotel.model';
 import { SelectEvent } from '../hotel-room/hotel-room.component';
-import { SelectedRooms, getSelectedRooms, getOrderBy } from '../hotel.reducer';
-import { HotelService } from '../services/hotel.service';
-import { ROOM_ORDER } from '../pipes/room-order.pipe';
-import { initialState } from '../hotel.reducer';
+import { SelectedRooms, getSelectedRooms, getOrderBy } from '../../hotel.reducer';
+import { HotelService } from '../../services/hotel.service';
+import { ROOM_ORDER } from '../../pipes/room-order.pipe';
+import { initialState } from '../../hotel.reducer';
 
 export interface OrderBy {
   value: number;

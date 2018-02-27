@@ -9,3 +9,7 @@
 .selected-room__occupancy {
   margin-bottom: 10px;
 }
+
+app-common-selector {
+  margin: 0 5px;
+}

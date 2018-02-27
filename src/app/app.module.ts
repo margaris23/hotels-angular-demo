@@ -1,50 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule, Store } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { AppRoutingModule } from './app-routing.module';
+import { routes } from './app.routes';
+import { ResultComponent } from './result/result.component';
+import { AppHotelModule } from './hotel/app-hotel.module';
 import { AppComponent } from './app.component';
-import { HotelComponent } from './hotel/hotel.component';
-import { HotelRoomsComponent } from './hotel-rooms/hotel-rooms.component';
-import { HotelService } from './services/hotel.service';
-import { HotelRoomComponent } from './hotel-room/hotel-room.component';
-import { hotelReducer as hotel } from './hotel.reducer';
-import { RoomSelectedPipe } from './pipes/room-selected.pipe';
-import { SelectedRoomsComponent } from './selected-rooms/selected-rooms.component';
-import { SelectedRoomComponent } from './selected-room/selected-room.component';
-import { RoomOrderPipe } from './pipes/room-order.pipe';
-import { HotelRatingComponent } from './hotel-rating/hotel-rating.component';
-import { CommonSelectorComponent } from './common-selector/common-selector.component';
-import { RoomPriceComponent } from './room-price/room-price.component';
+import { hotelReducer as hotel } from './hotel/hotel.reducer';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HotelComponent,
-    HotelRoomsComponent,
-    HotelRoomComponent,
-    SelectedRoomsComponent,
-    SelectedRoomComponent,
-    RoomSelectedPipe,
-    RoomOrderPipe,
-    HotelRatingComponent,
-    CommonSelectorComponent,
-    RoomPriceComponent
+    ResultComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
-    FormsModule,
-    AppRoutingModule,
+    AppHotelModule,
     HttpClientModule,
+    RouterModule.forRoot(routes),
     StoreModule.forRoot({ hotel }),
     StoreDevtoolsModule.instrument()
   ],
-  providers: [HotelService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { SelectedRoom } from './hotel.model';
+import { SelectedRoom, ChildAge } from './hotel.model';
 
 export enum HotelActionTypes {
   SELECT = '[Hotel Action] Select',
@@ -8,6 +8,7 @@ export enum HotelActionTypes {
   SORT_ROOMS = '[Hotel Action] Sort rooms',
   SELECT_ADULTS = '[Hotel Action] Select adults for room',
   SELECT_CHILDREN = '[Hotel Action] Select children for room',
+  SELECT_CHILD_AGE = '[Hotel Action] Select age for child'
 }
 
 export interface SelectHotelActionPayload {
@@ -16,9 +17,10 @@ export interface SelectHotelActionPayload {
 }
 
 export interface SelectCommonPayload {
-  roomId: string,
+  roomId: string;
   adults?: number;
   children?: number;
+  childAge?: ChildAge;
 }
 
 export class SelectHotelAction implements Action {
@@ -51,10 +53,16 @@ export class SelectChildrenRoomHotelAction implements Action {
   constructor(public payload: SelectCommonPayload) {}
 }
 
+export class SelectAgeChildAction implements Action {
+  public readonly type: string = HotelActionTypes.SELECT_CHILD_AGE;
+  constructor(public payload: SelectCommonPayload) {}
+}
+
 export type HotelActions =
   | SelectHotelAction
   | UnSelectHotelAction
   | ResetHotelAction
   | SortHotelRoomsAction
   | SelectAdultsRoomHotelAction
-  | SelectChildrenRoomHotelAction;
+  | SelectChildrenRoomHotelAction
+  | SelectAgeChildAction;

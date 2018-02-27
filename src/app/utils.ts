@@ -1,12 +1,15 @@
-import { Room, Hotel, SelectedRoom } from './hotel.model';
+import { Room, Hotel, SelectedRoom } from './hotel/hotel.model';
 
-export const getRoomWithIndex = (room: Room, initialIndex: number) => ({
-  ...room,
-  initialIndex
-});
+export function getRoomWithIndex(room: Room, initialIndex: number) {
+  return {
+    ...room,
+    initialIndex
+  };
+}
 
-export const getRoomsIndexed = (rooms: Room[] = []): Room[] =>
-  rooms.map(this.getRoomWithIndex);
+export function getRoomsIndexed(rooms: Room[] = []): Room[] {
+  return rooms.map(getRoomWithIndex);
+}
 
 export function transformRooms(hotel: Hotel): Hotel {
   return {
@@ -23,9 +26,24 @@ export function roomPrice(room: SelectedRoom): number {
   return room.adults * room.pricePerAdult + room.children * room.pricePerChild;
 }
 
-export const add = (a: number, b: number): number => a + b;
+export function add(a: number, b: number): number {
+  return a + b;
+}
 
-export const priceSum = (rooms: SelectedRoom[] = []): number =>
-  rooms
+export function priceSum(rooms: SelectedRoom[] = []): number {
+  return rooms
     .map(roomPrice)
     .reduce(add, 0);
+}
+
+// Creates an array of max-min elements with default value if applicable
+export function range(min: number, max: number, value?: number): number[] {
+  if (!max || min > max) {
+    return [];
+  }
+  const reply = new Array(max);
+  for (let val = min, index = 0; val <= max; ++val, ++index) {
+    reply[index] = value || val;
+  }
+  return reply;
+}

@@ -5,7 +5,7 @@ import {
   EventEmitter,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { Room } from '../hotel.model';
+import { Room } from '../../hotel.model';
 
 export interface SelectEvent {
   room: Room;

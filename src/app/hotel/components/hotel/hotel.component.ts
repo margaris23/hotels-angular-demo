@@ -4,7 +4,7 @@ import {
   Input,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { Hotel } from '../hotel.model';
+import { Hotel } from '../../hotel.model';
 
 @Component({
   selector: 'app-hotel',

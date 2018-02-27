@@ -4,7 +4,8 @@ export enum Currency {
 
 export const Defaults = {
   adults: 2,
-  children: 0
+  children: 0,
+  childAge: 1
 };
 
 export interface Room {
@@ -29,4 +30,9 @@ export interface Hotel {
   currency: Currency;
   rooms: Room[];
   totalPrice: number;
+}
+
+export interface ChildAge {
+  index: number;
+  value: number;
 }

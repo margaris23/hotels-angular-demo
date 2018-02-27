@@ -4,6 +4,7 @@
     *ngFor="let room of selectedRooms$ | async"
     [room]="room"
     (adultsSelect)="onAdultsSelected(room.id, $event)"
-    (childrenSelect)="onChildrenSelected(room.id, $event)">
+    (childrenSelect)="onChildrenSelected(room.id, $event)"
+    (ageSelect)="onAgeSelected(room.id, $event)">
   </app-selected-room>
 </ul>
