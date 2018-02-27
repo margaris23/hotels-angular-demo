@@ -38,6 +38,7 @@ export class SelectedRoomComponent {
     this.ageSelect.emit({ index, value } as ChildAge);
   }
 
+  // TODO: refactor a bit
   private updateChildAges(newLength: number): void {
     const lengthDiff: number = this.childAges.length - newLength;
     if (lengthDiff > 0) {

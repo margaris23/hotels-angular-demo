@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
 import { State } from '../hotel.reducer';
-import { Hotel, Room, SelectedRoom, Defaults } from '../hotel.model';
+import { Hotel, Room, SelectedRoom, Defaults, ChildAge } from '../hotel.model';
 import * as actions from '../hotel.actions';
 import { transformRooms } from '../utils';
 
@@ -48,6 +48,10 @@ export class HotelService {
 
   public dispatchSelectChildren(roomId: string, children: number): void {
     this.store.dispatch(new actions.SelectChildrenRoomHotelAction({roomId, children}));
+  }
+
+  public dispatchSelectAgeForChild(roomId: string, childAge: ChildAge): void {
+    this.store.dispatch(new actions.SelectAgeChildAction({ roomId, childAge }));
   }
 }
 

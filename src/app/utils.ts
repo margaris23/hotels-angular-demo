@@ -1,5 +1,6 @@
 import { Room, Hotel, SelectedRoom } from './hotel.model';
 
+// Creates an array of max-min elements with default value if applicable
 export function range(min: number, max: number, value?: number): number[] {
   if (!max || min > max) {
     return [];

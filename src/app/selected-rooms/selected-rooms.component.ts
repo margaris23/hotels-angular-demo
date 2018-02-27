@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { SelectedRooms, getSelectedRooms } from '../hotel.reducer';
 import { HotelService } from '../services/hotel.service';
-import { Room } from '../hotel.model';
+import { Room, ChildAge } from '../hotel.model';
 
 @Component({
   selector: 'app-selected-rooms',
@@ -37,5 +37,9 @@ export class SelectedRoomsComponent implements OnInit {
 
   public onChildrenSelected(roomId: string, children: number): void {
     this.hotelService.dispatchSelectChildren(roomId, children);
+  }
+
+  public onAgeSelected(roomId: string, childAge: ChildAge): void {
+    this.hotelService.dispatchSelectAgeForChild(roomId, childAge);
   }
 }

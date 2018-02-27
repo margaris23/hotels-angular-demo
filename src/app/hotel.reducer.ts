@@ -1,7 +1,25 @@
 import { Action, createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { HotelActionTypes, HotelActions } from './hotel.actions';
-import { SelectedRoom } from './hotel.model';
+import { SelectedRoom, Defaults } from './hotel.model';
 import { ROOM_ORDER } from './pipes/room-order.pipe';
+import { range } from './utils';
+
+// TODO refactor
+function getUpdatedChildrenAges(childrenAges: number[], childrenNum: number): number[] {
+  const _childrenAges = [ ...childrenAges ];
+  const lengthDiff: number = _childrenAges.length - childrenNum;
+  if (lengthDiff > 0) {
+    _childrenAges.splice(0, lengthDiff);
+  } else {
+    let index = _childrenAges.length;
+    const value = Defaults.childAge;
+    for (let i = lengthDiff; i < 0; ++i, ++index) {
+      _childrenAges.push(value);
+    }
+  }
+  return _childrenAges;
+}
 
 export interface SelectedRooms {
   [roomId: string]: SelectedRoom;
@@ -55,7 +73,23 @@ export function hotelReducer(
       };
 
     case HotelActionTypes.SELECT_CHILDREN:
-      selectedRooms[action.payload.roomId].children = action.payload.children;
+      const children: number = action.payload.children;
+      const roomId: string = action.payload.roomId;
+
+      selectedRooms[roomId].children = children;
+      selectedRooms[roomId].childrenAges =
+        getUpdatedChildrenAges(selectedRooms[roomId].childrenAges, children);
+
+      return {
+        ...state,
+        selectedRooms
+      };
+
+    case HotelActionTypes.SELECT_CHILD_AGE:
+
+      selectedRooms[action.payload.roomId]
+        .childrenAges[action.payload.childAge.index] = action.payload.childAge.value;
+
       return {
         ...state,
         selectedRooms
