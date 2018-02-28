@@ -5,6 +5,16 @@ import { Store } from '@ngrx/store';
 import { ResultComponent } from './result.component';
 import { HotelService } from '../hotel/services/hotel.service';
 
+class MockStore {
+  public pipe() {}
+}
+
+class MockRoute {
+  public paramMap = {
+    pipe: () => {}
+  };
+}
+
 describe('ResultComponent', () => {
   let component: ResultComponent;
   let fixture: ComponentFixture<ResultComponent>;
@@ -14,8 +24,8 @@ describe('ResultComponent', () => {
       declarations: [ ResultComponent ],
       providers: [
         { provide: HotelService, useValue: {} },
-        { provide: Store, useValue: {} },
-        { provide: ActivatedRoute, useValue: {} }
+        { provide: Store, useClass: MockStore },
+        { provide: ActivatedRoute, useClass: MockRoute }
       ]
     })
     .compileComponents();

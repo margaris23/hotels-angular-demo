@@ -4,7 +4,7 @@
   <div class="selected-room__occupancy">
     <label>Adults
       <app-common-selector
-        [value]="room.adults"
+        [value]="room?.adults"
         [range]="[1,2,3,4]"
         (select)="onAdultsSelected($event)">
       </app-common-selector>
@@ -12,7 +12,7 @@
 
     <label>Children
       <app-common-selector
-        [value]="room.children"
+        [value]="room?.children"
         [range]="[0,1,2,3]"
         (select)="onChildrenSelected($event)">
       </app-common-selector>
@@ -21,17 +21,17 @@
     <label>Children ages
       <app-common-selector
         *ngFor="let childAge of childAges"
-        [value]="childAge.value"
+        [value]="childAge?.value"
         [range]="ageRange"
-        (select)="onAgeSelected(childAge.index, $event)">
+        (select)="onAgeSelected(childAge?.index, $event)">
       </app-common-selector>
     </label>
   </div>
 
   <app-room-price
-    [adults]="room.adults"
-    [pricePerAdult]="room.pricePerAdult"
-    [children]="room.children"
-    [pricePerChild]="room.pricePerChild">
+    [adults]="room?.adults"
+    [pricePerAdult]="room?.pricePerAdult"
+    [children]="room?.children"
+    [pricePerChild]="room?.pricePerChild">
   </app-room-price>
 </li>

@@ -8,6 +8,7 @@ import { RoomOrderPipe } from '../../pipes/room-order.pipe';
 import { RoomSelectedPipe } from '../../pipes/room-selected.pipe';
 import { HotelService } from '../../services/hotel.service';
 import { HotelRoomsComponent } from './hotel-rooms.component';
+import * as mocks from '../../mocks';
 
 describe('HotelRoomsComponent', () => {
   let component: HotelRoomsComponent;
@@ -18,7 +19,7 @@ describe('HotelRoomsComponent', () => {
       imports: [CommonModule, FormsModule],
       declarations: [ components.included, RoomOrderPipe, RoomSelectedPipe ],
       providers: [
-        { provide: Store, useValue: {} },
+        { provide: Store, useClass: mocks.MockStore },
         { provide: HotelService, useValue: {} }
       ]
     })

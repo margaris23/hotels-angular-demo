@@ -1,7 +1,7 @@
 export interface ResultRoom {
   id: string;
   adults: number;
-  children: number
+  children: number;
   childrenAges: number[];
 }
 

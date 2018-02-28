@@ -8,6 +8,7 @@ import { SelectedRoomComponent } from '../selected-room/selected-room.component'
 import { CommonSelectorComponent } from '../common-selector/common-selector.component';
 import { RoomPriceComponent } from '../room-price/room-price.component';
 import { HotelService } from '../../services/hotel.service';
+import * as mocks from '../../mocks';
 
 describe('SelectedRoomsComponent', () => {
   let component: SelectedRoomsComponent;
@@ -24,7 +25,7 @@ describe('SelectedRoomsComponent', () => {
       ],
       providers: [
         { provide: HotelService, useValue: {} },
-        { provide: Store, useValue: {} }
+        { provide: Store, useClass: mocks.MockStore }
       ]
     })
     .compileComponents();

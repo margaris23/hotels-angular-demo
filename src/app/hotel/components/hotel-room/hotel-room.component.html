@@ -3,7 +3,7 @@
               'hotel-room--selected': isSelected}">
   <label class="hotel-room__label">
     <input type="checkbox" (change)="onChanged($event)" />
-    <strong>{{room.name}}</strong>
-    <small>({{room.pricePerAdult}} per adult, {{room.pricePerChild}} EUR per child)</small>
+    <strong>{{room?.name}}</strong>
+    <small>({{room?.pricePerAdult}} per adult, {{room?.pricePerChild}} EUR per child)</small>
   </label>
 </li>
