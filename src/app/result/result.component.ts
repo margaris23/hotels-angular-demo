@@ -6,7 +6,7 @@ import { map, take, combineLatest } from 'rxjs/operators';
 
 import { getSelectedRooms, SelectedRooms } from '../hotel/hotel.reducer';
 import { Result, ResultRoom } from './result.model';
-import { priceSum } from '../utils';
+import { priceSum, roomPrice } from '../utils';
 
 @Component({
   selector: 'app-result',
@@ -15,13 +15,21 @@ import { priceSum } from '../utils';
 export class ResultComponent implements OnInit {
   public result$: Observable<Result>;
 
-  private toResult = ([hotelId, rooms]): Result => {
+  private toResult = ([hotelId, rooms]: [string, SelectedRooms]): Result => {
+    let totalPrice = 0;
+
+    const calculateTotal = (key: string) => {
+      totalPrice += roomPrice(rooms[key]);
+      return key;
+    };
+
     return {
       hotelId,
       rooms: Object
               .keys(rooms)
+              .map(calculateTotal)
               .map(this.toRoom(rooms)),
-      totalPrice: 0
+      totalPrice
     };
   }
 
@@ -33,7 +41,7 @@ export class ResultComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.result$ = 
+    this.result$ =
       this.route.paramMap.pipe(
         map(this.getHotelId),
         combineLatest(
