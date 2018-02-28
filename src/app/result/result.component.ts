@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { map, take } from 'rxjs/operators';
+import { map, take, combineLatest } from 'rxjs/operators';
 
 import { getSelectedRooms, SelectedRooms } from '../hotel/hotel.reducer';
 import { Result, ResultRoom } from './result.model';
@@ -14,9 +15,9 @@ import { priceSum } from '../utils';
 export class ResultComponent implements OnInit {
   public result$: Observable<Result>;
 
-  private toResult = (rooms: SelectedRooms): Result => {
+  private toResult = ([hotelId, rooms]): Result => {
     return {
-      hotelId: '',
+      hotelId,
       rooms: Object
               .keys(rooms)
               .map(this.toRoom(rooms)),
@@ -24,14 +25,25 @@ export class ResultComponent implements OnInit {
     };
   }
 
-  constructor(private store: Store<any>) {}
+  private getHotelId = (params: ParamMap) => params.get('hotelId');
+
+  constructor(
+    private store: Store<any>,
+    private route: ActivatedRoute
+  ) {}
 
   public ngOnInit(): void {
-    this.result$ = this.store.pipe(
-      select(getSelectedRooms),
-      take(1),
-      map(this.toResult)
-    );
+    this.result$ = 
+      this.route.paramMap.pipe(
+        map(this.getHotelId),
+        combineLatest(
+          this.store.pipe(
+            select(getSelectedRooms),
+            take(1)
+          ),
+        ),
+        map(this.toResult)
+      );
   }
 
   private toRoom(rooms: SelectedRooms): (string) => ResultRoom {
