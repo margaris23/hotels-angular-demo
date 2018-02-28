@@ -8,7 +8,7 @@ import { RoomOrderPipe } from '../../pipes/room-order.pipe';
 import { RoomSelectedPipe } from '../../pipes/room-selected.pipe';
 import { HotelService } from '../../services/hotel.service';
 import { HotelRoomComponent } from './hotel-room.component';
-import * as mocks from '../../mocks';
+import * as mocks from '../../../mocks.spec';
 
 describe('HotelRoomComponent', () => {
   let component: HotelRoomComponent;

@@ -8,7 +8,7 @@ import { SelectedRoomComponent } from '../selected-room/selected-room.component'
 import { CommonSelectorComponent } from '../common-selector/common-selector.component';
 import { RoomPriceComponent } from '../room-price/room-price.component';
 import { HotelService } from '../../services/hotel.service';
-import * as mocks from '../../mocks';
+import * as mocks from '../../../mocks.spec';
 
 describe('SelectedRoomsComponent', () => {
   let component: SelectedRoomsComponent;
