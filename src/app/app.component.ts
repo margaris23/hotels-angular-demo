@@ -8,7 +8,7 @@ import { Hotel, SelectedRoom } from './hotel/hotel.model';
 import { HotelService } from './hotel/services/hotel.service';
 import {
   State,
-  hasRoomsSelected, 
+  hasRoomsSelected,
   getSelectedRooms,
   SelectedRooms
 } from './hotel/hotel.reducer';
@@ -27,15 +27,20 @@ export class AppComponent implements OnInit {
   public submitted = false;
 
   private toSelectedRoomsArray = (rooms: SelectedRooms): SelectedRoom[] =>
-    Object.keys(rooms).map((roomId: string) => rooms[roomId]);
-  
+    Object
+      .keys(rooms)
+      .map((roomId: string) => rooms[roomId])
+
   private checkErrors = (arr: any[] = []) => this.hasErrors = arr.length > 3;
 
   constructor(
     private store: Store<State>,
     private hotelService: HotelService,
     private router: Router
-  ) {
+  ) {}
+
+  public ngOnInit(): void {
+    this.hotel$ = this.hotelService.hotel$();
     this.noRoomsSelected$ = this.store.pipe(
       select(hasRoomsSelected),
       map(invert)
@@ -46,10 +51,6 @@ export class AppComponent implements OnInit {
       tap(this.checkErrors),
       map(priceSum)
     );
-  }
-
-  public ngOnInit(): void {
-    this.hotel$ = this.hotelService.hotel$();
     this.setupRouteReuseStrategy();
   }
 

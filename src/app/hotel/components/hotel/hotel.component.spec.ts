@@ -1,6 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 import { HotelComponent } from './hotel.component';
+import * as components from '../index';
+import { RoomOrderPipe } from '../../pipes/room-order.pipe';
+import { RoomSelectedPipe } from '../../pipes/room-selected.pipe';
+import { HotelService } from '../../services/hotel.service';
 
 describe('HotelComponent', () => {
   let component: HotelComponent;
@@ -8,7 +15,12 @@ describe('HotelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HotelComponent ]
+      imports: [CommonModule, FormsModule],
+      declarations: [ components.included, RoomOrderPipe, RoomSelectedPipe ],
+      providers: [
+        { provide: Store, useValue: {} },
+        { provide: HotelService, useValue: {} }
+      ]
     })
     .compileComponents();
   }));

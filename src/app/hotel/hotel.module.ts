@@ -22,4 +22,4 @@ import * as components from './components/index';
     ...components.exported
   ]
 })
-export class AppHotelModule { }
+export class HotelModule { }

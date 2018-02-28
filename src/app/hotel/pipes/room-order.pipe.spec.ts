@@ -1,8 +1,8 @@
-import { RoomFilterPipe } from './room-filter.pipe';
+import { RoomOrderPipe } from './room-order.pipe';
 
-describe('HotelRoomFilterPipe', () => {
+describe('RoomOrderPipe', () => {
   it('create an instance', () => {
-    const pipe = new RoomFilterPipe();
+    const pipe = new RoomOrderPipe();
     expect(pipe).toBeTruthy();
   });
 });

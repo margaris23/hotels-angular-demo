@@ -8,7 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
 import { ResultComponent } from './result/result.component';
-import { AppHotelModule } from './hotel/app-hotel.module';
+import { HotelModule } from './hotel/hotel.module';
 import { AppComponent } from './app.component';
 import { hotelReducer as hotel } from './hotel/hotel.reducer';
 
@@ -20,7 +20,7 @@ import { hotelReducer as hotel } from './hotel/hotel.reducer';
   imports: [
     BrowserModule,
     CommonModule,
-    AppHotelModule,
+    HotelModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     StoreModule.forRoot({ hotel }),
