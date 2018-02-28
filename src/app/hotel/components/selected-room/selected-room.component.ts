@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 import { SelectedRoom, ChildAge, Defaults } from '../../hotel.model';
-import { range } from '../../../utils';
+import { range, reduceSize } from '../../../utils';
 
 @Component({
   selector: 'app-selected-room',
@@ -38,17 +38,26 @@ export class SelectedRoomComponent {
     this.ageSelect.emit({ index, value } as ChildAge);
   }
 
-  // TODO: refactor a bit
   private updateChildAges(newLength: number): void {
     const lengthDiff: number = this.childAges.length - newLength;
     if (lengthDiff > 0) {
-      this.childAges.splice(0, lengthDiff);
+      reduceSize(this.childAges, lengthDiff);
     } else {
-      let index = this.childAges.length;
-      const value = Defaults.childAge;
-      for (let i = lengthDiff; i < 0; ++i, ++index) {
-        this.childAges.push({ index, value } as ChildAge);
-      }
+      this.increaseChildAgesSize(lengthDiff);
     }
+  }
+
+  private increaseChildAgesSize(size: number): void {
+    let index = this.childAges.length;
+    for (let i = size; i < 0; ++i, ++index) {
+      this.childAges.push(this.makeDefaultChildAge(index));
+    }
+  }
+
+  private makeDefaultChildAge(index: number): ChildAge {
+    return {
+      index,
+      value: Defaults.childAge
+    } as ChildAge;
   }
 }

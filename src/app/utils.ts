@@ -47,3 +47,15 @@ export function range(min: number, max: number, value?: number): number[] {
   }
   return reply;
 }
+
+export function reduceSize<T>(arr: T[], size: number): void {
+  arr.splice(0, size);
+}
+
+// increases size of an array object by adding default values
+export function increaseSize<T>(arr: T[], size, defaultValue: T): void {
+  let index = arr.length;
+  for (let i = size; i < 0; ++i, ++index) {
+    arr.push(defaultValue);
+  }
+}
